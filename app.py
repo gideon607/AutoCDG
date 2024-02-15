@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 # app.py
 
-from flask import Flask, render_templates, request, jsonify
+from flask import Flask, render_template, request, jsonify
 import subprocess
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_templates('index.html')
+    return render_template('index.html')
 
 @app.route('/generate', methods=['POST'])
 def generate_documentation():
