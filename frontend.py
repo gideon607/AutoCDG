@@ -1,9 +1,10 @@
+#!/usr/bin/python3
 # frontend.py
 
 import requests
 
 def main():
-    # Get input from the user (GitHub URL or code snippet)
+    # Gets the input from the user (GitHub URL or code snippet)
     github_link = input("Enter GitHub repository URL: ")
 
     # Send GitHub link to Flask backend
