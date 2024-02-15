@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCDG</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    form {
+      text-align: center;
+      margin-top: 30px;
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Automated Code Documentation Generator</h1>
+    <h2>Enter GitHub Repository Link</h2>
+    <form id="githubForm">
+      <input type="text" id="githubLink" placeholder="Enter GitHub repository link" required>
+      <br>
+      <input type="submit" value="Generate Documentation">
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById("githubForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var githubLink = document.getElementById("githubLink").value;
+      fetch('/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ githubLink: githubLink })
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("result").innerHTML = data;
+      })
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
+
