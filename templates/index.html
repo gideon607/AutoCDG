@@ -71,11 +71,15 @@
       })
       .then(response => response.text())
       .then(data => {
-        document.getElementById("result").innerHTML = data;
+        // Create a new div element to contain the documentation
+        var documentationDiv = document.createElement('div');
+        // Set the inner HTML of the new div with the fetched data
+        documentationDiv.innerHTML = data;
+        // Append the new div to the result div
+        document.getElementById("result").appendChild(documentationDiv);
       })
       .catch(error => console.error('Error:', error));
     });
   </script>
 </body>
 </html>
-
