@@ -33,7 +33,7 @@
       border-radius: 5px;
       margin-bottom: 10px;
     }
-    input[type="submit"] {
+    input[type="submit"], .download-btn {
       background-color: #007bff;
       color: #fff;
       padding: 10px 20px;
@@ -41,22 +41,11 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    input[type="submit"]:hover {
+    input[type="submit"]:hover, .download-btn:hover {
       background-color: #0056b3;
     }
-    #downloadBtn {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin-top: 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #downloadBtn:hover {
-      background-color: #0056b3;
+    .download-btn {
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -70,7 +59,6 @@
       <input type="submit" value="Generate Documentation">
     </form>
     <div id="result"></div>
-    <a href="#" id="downloadBtn" download>Download Documentation</a>
   </div>
 
   <script>
@@ -86,14 +74,32 @@
       })
       .then(response => response.text())
       .then(data => {
-        var documentationDiv = document.createElement('div');
-        documentationDiv.innerHTML = data;
-        document.getElementById("result").appendChild(documentationDiv);
-        
-        // Enable the download button and set its href to the data URL of the generated documentation
-        var downloadBtn = document.getElementById("downloadBtn");
-        downloadBtn.href = "data:text/plain;charset=utf-8," + encodeURIComponent(data);
-        downloadBtn.style.display = "block";
+        var resultDiv = document.getElementById("result");
+        // Display the documentation
+        resultDiv.innerHTML = data;
+
+        // Create a download button
+        var downloadBtn = document.createElement('button');
+        downloadBtn.textContent = "Download Documentation";
+        downloadBtn.classList.add("download-btn");
+        // Set the click event listener for the download button
+        downloadBtn.addEventListener("click", function() {
+          // Create a Blob containing the documentation content
+          var blob = new Blob([data], { type: 'text/plain' });
+          // Create a temporary URL for the Blob
+          var url = window.URL.createObjectURL(blob);
+          // Create a link element for downloading the Blob
+          var link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', 'documentation.txt');
+          // Simulate a click on the link to start the download
+          link.click();
+          // Release the temporary URL
+          window.URL.revokeObjectURL(url);
+        });
+
+        // Append the download button to the result div
+        resultDiv.appendChild(downloadBtn);
       })
       .catch(error => console.error('Error:', error));
     });
