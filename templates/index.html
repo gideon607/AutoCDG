@@ -44,6 +44,20 @@
     input[type="submit"]:hover {
       background-color: #0056b3;
     }
+    #downloadBtn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #downloadBtn:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
@@ -56,6 +70,7 @@
       <input type="submit" value="Generate Documentation">
     </form>
     <div id="result"></div>
+    <a href="#" id="downloadBtn" download>Download Documentation</a>
   </div>
 
   <script>
@@ -71,12 +86,14 @@
       })
       .then(response => response.text())
       .then(data => {
-        // Create a new div element to contain the documentation
         var documentationDiv = document.createElement('div');
-        // Set the inner HTML of the new div with the fetched data
         documentationDiv.innerHTML = data;
-        // Append the new div to the result div
         document.getElementById("result").appendChild(documentationDiv);
+        
+        // Enable the download button and set its href to the data URL of the generated documentation
+        var downloadBtn = document.getElementById("downloadBtn");
+        downloadBtn.href = "data:text/plain;charset=utf-8," + encodeURIComponent(data);
+        downloadBtn.style.display = "block";
       })
       .catch(error => console.error('Error:', error));
     });
