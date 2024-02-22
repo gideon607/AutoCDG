@@ -47,6 +47,9 @@
     .download-btn {
       margin-top: 10px;
     }
+    #documentation {
+      white-space: pre-wrap;
+    }
   </style>
 </head>
 <body>
@@ -58,7 +61,9 @@
       <br>
       <input type="submit" value="Generate Documentation">
     </form>
-    <div id="result"></div>
+    <div id="result">
+      <pre id="documentation"></pre>
+    </div>
   </div>
 
   <script>
@@ -74,9 +79,9 @@
       })
       .then(response => response.text())
       .then(data => {
-        var resultDiv = document.getElementById("result");
+        var documentationDiv = document.getElementById("documentation");
         // Display the documentation
-        resultDiv.innerHTML = data;
+        documentationDiv.textContent = data;
 
         // Create a download button
         var downloadBtn = document.createElement('button');
@@ -99,7 +104,7 @@
         });
 
         // Append the download button to the result div
-        resultDiv.appendChild(downloadBtn);
+        document.getElementById("result").appendChild(downloadBtn);
       })
       .catch(error => console.error('Error:', error));
     });
