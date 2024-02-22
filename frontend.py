@@ -8,7 +8,7 @@ def main():
     github_link = input("Enter GitHub repository URL: ")
 
     # Send GitHub link to Flask backend
-    response = requests.post('http://localhost:5000/generate', json={'githubLink': github_link})
+    response = requests.post('http://54.157.189.26:5000/generate', json={'githubLink': github_link})
     print(response.text)
 
 if __name__ == "__main__":
