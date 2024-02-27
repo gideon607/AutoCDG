@@ -1,65 +1,84 @@
-#ALX personal portfolio :::#####
-This is the AutoCDG :
-A Web-app and CLI looking at the generation of documentation of 
-github projects for ease of use, effective use of time 
-and energy. 
+# AutoCDG
 
-INSTALLATION
-Web version: makes use of FLASK to test and develop: it can be edited to suit your needs 
+AutoCDG is a web application and CLI tool designed to generate documentation for GitHub projects. It aims to streamline the process of documenting projects, saving time and energy for developers.
 
-Cli Version : allows for the use of command line to start the program and collect documentation.txt from the server.
+## Installation
 
-DEPENDANCIES 
-Installation:::::::::::::::::::::::::::::
-#Ubuntu 20.04
-#spaCy on python#
-pip install spacy
-python -m spacy download en_core_web_sm
+### Web Version
 
-#NTLK Toolkit for natural language processing 
-pip install nltk
+The web version of AutoCDG is built using Flask. Follow these steps to install and configure it:
 
-#XDG-utils 
-sudo apt-get install xdg-utils
+1. Install Flask:
 
-Using FLASK(web version)
-pip install Flask development setting 
-edit app.py to change flask setting
-::::::::::::::::::::::::::::::::::::::::::
+   ```
+   pip install Flask
+   ```
 
-USAGE::
-start the program if the requirements have been installed 
+2. Edit `app.py` to customize Flask settings according to your needs.
 
-CLI Version
-In Directory:
-./codemain.py 
-or 
+### CLI Version
+
+The CLI version allows for command-line usage to start the program and retrieve `documentation.txt` from the server. Install dependencies as follows:
+
+1. Install spaCy for Python:
+
+   ```
+   pip install spacy
+   python -m spacy download en_core_web_sm
+   ```
+
+2. Install NLTK Toolkit for natural language processing:
+
+   ```
+   pip install nltk
+   ```
+
+3. Install XDG-utils:
+
+   ```
+   sudo apt-get install xdg-utils
+   ```
+
+## Usage
+
+### CLI Version
+
+Navigate to the directory containing the CLI version and execute:
+
+```
+./codemain.py
+```
+or
+```
 python3 codemain.py
-Enter github link e.g https://github.com/username/project
+```
 
-Web version 
-Install FLASK
-change setting in app.py to serveraddress:5000
-use ./app.py 
+Then, enter the GitHub link (e.g., `https://github.com/username/project`).
 
-::::::::::::::::::::::::::::::::::::::::::
-Documentation:
-https://autocdg.webflow.io/
+### Web Version
 
+To use the web version:
 
+1. Install Flask (if not already installed).
 
+2. Modify settings in `app.py` to specify the server address (`serveraddress:5000`).
 
-::::::::::::::::::::::::::::::::::::::::::
+3. Run the Flask app:
 
-Contributions:
-Feel free to make it more beatiful and efficent 
-robustness is welcome 
+   ```
+   ./app.py
+   ```
 
-Bugs bounty is also welcome.. N.b fix bug on frontend won't link to backend documentation.txt
-::::::::::::::::::::::::::::::::::::::::::
+## Documentation
 
-License 
-Open Source ::
-free to distrubute, run actively on any hosting.":
+Visit [AutoCDG Documentation](https://autocdg.webflow.io/) for detailed instructions on how to use AutoCDG.
 
-:::::::::::::::::::::::::::::::::::::
+## Contributions
+
+Contributions to make AutoCDG more efficient and robust are welcome. Feel free to contribute by submitting pull requests or reporting issues.
+
+Bugs bounty is also welcome. Please note any bugs found, especially those related to frontend-backend communication issues.
+
+## License
+
+AutoCDG is open-source software distributed under the MIT License. You are free to distribute and run it actively on any hosting platform.
