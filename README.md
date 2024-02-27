@@ -1,6 +1,7 @@
 # AutoCDG
 
 AutoCDG is a web application and CLI tool designed to generate documentation for GitHub projects. It aims to streamline the process of documenting projects, saving time and energy for developers.
+![Screenshot 2024-02-26 122021](https://github.com/gideon607/AutoCDG/assets/48885554/0d28810c-72b6-4b39-9712-27d077598c33)
 
 ## Installation
 
